@@ -33,7 +33,7 @@ class ProfileFragment : Fragment() {
 
         viewModel = ViewModelProvider(this)[ProfileViewModel::class.java]
 
-        CoroutineScope(Dispatchers.IO).launch {
+        viewLifecycleOwner.lifecycleScope.launch(Dispatchers.IO) {
             val profile = viewModel.loadProfile()
             withContext(Dispatchers.Main) {
                 nameView.text = profile?.name ?: "Unknown"
