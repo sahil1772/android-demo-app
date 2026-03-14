@@ -33,6 +33,8 @@ class HomeFragment : Fragment() {
         viewModel.feedItems.observe(viewLifecycleOwner) { items ->
             adapter.updateItems(items)
         }
-        viewModel.loadFeed()
+        if (savedInstanceState == null) {
+            viewModel.loadFeed()
+        }
     }
 }
