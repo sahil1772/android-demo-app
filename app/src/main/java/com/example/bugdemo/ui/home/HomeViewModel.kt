@@ -17,7 +17,7 @@ class HomeViewModel : ViewModel() {
         viewModelScope.launch {
             val items = feedUseCase.getFeed()
             val currentList = _feedItems.value.orEmpty()
-            _feedItems.value = currentList + items
+            _feedItems.value = (currentList + items).distinctBy { it.id }
         }
     }
 }
