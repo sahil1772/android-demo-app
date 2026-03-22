@@ -31,7 +31,7 @@ class HomeFragment : Fragment() {
 
         viewModel = ViewModelProvider(this)[HomeViewModel::class.java]
         viewModel.feedItems.observe(viewLifecycleOwner) { items ->
-            adapter.updateItems(items)
+            adapter.submitList(items)
         }
         if (savedInstanceState == null) {
             viewModel.loadFeed()
